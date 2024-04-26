@@ -1,0 +1,22 @@
+import cosas.*
+import casa.*
+
+test "probando metodos de casaDePepeYJulian"{
+	casaDePepeYJulian.comprar(heladera)
+	casaDePepeYJulian.comprar(cama)
+	casaDePepeYJulian.comprar(plancha)
+	
+	assert.equals([heladera,cama,plancha],casaDePepeYJulian.cosas())
+	assert.equals(3,casaDePepeYJulian.cantidadDeCosasCompradas())
+	assert.notThat(casaDePepeYJulian.tieneComida())
+	assert.that(casaDePepeYJulian.vieneDeEquiparse())
+	assert.that(casaDePepeYJulian.esDerrochona())
+	assert.equals(heladera,casaDePepeYJulian.compraMasCara())
+	assert.equals([heladera,plancha],casaDePepeYJulian.electrodomesticosComprados())
+	assert.notThat(casaDePepeYJulian.malaEpoca())
+	
+	var cosasQueFaltan = [heladera,tiraDeAsado,paqueteDeFideos]
+	
+	assert.equals(#{tiraDeAsado,paqueteDeFideos},casaDePepeYJulian.queFaltaComprar(cosasQueFaltan))
+	assert.that(casaDePepeYJulian.faltaComida())
+}
