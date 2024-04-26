@@ -1,10 +1,17 @@
 import cosas.* //obviamente, vamos a usar los objetos del archivo cosas ;-)
+import cuentasBancarias.*
 
 object casaDePepeYJulian {
 	const cosas = []
+	var cuentaBancaria //debe ser una cuenta del archivo cuentasBancarias
 	method cosas() = cosas
+	method cuentaBancaria(unaCuenta){cuentaBancaria = unaCuenta} 
 	
-	method comprar(cosa){cosas.add(cosa)}
+	
+	method comprar(cosa){
+		cosas.add(cosa) 
+		self.gastar(cosa.precio())
+	}
 	method cantidadDeCosasCompradas()= cosas.size()
 	method tieneComida() = cosas.any({c=>c.esComida()})
 	method vieneDeEquiparse() = 
@@ -18,4 +25,6 @@ object casaDePepeYJulian {
 		unaLista.asSet().difference(cosas.asSet())
 	method faltaComida() = 
 		cosas.filter({c=>c.esComida()}).size() < 2
+	method gastar(importe){cuentaBancaria.extraer(importe)}
+	method dineroDisponible() = cuentaBancaria.saldo()
 }

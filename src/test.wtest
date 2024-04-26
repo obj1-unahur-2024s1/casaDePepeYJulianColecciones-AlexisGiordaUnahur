@@ -1,7 +1,10 @@
 import cosas.*
 import casa.*
+import cuentasBancarias.*
 
 test "probando metodos de casaDePepeYJulian"{
+	cuentaCorriente.depositar(100000000)
+	casaDePepeYJulian.cuentaBancaria(cuentaCorriente)
 	casaDePepeYJulian.comprar(heladera)
 	casaDePepeYJulian.comprar(cama)
 	casaDePepeYJulian.comprar(plancha)
@@ -20,3 +23,31 @@ test "probando metodos de casaDePepeYJulian"{
 	assert.equals(#{tiraDeAsado,paqueteDeFideos},casaDePepeYJulian.queFaltaComprar(cosasQueFaltan))
 	assert.that(casaDePepeYJulian.faltaComida())
 }
+
+test "probando cuentaCorriente"{
+	cuentaCorriente.depositar(5000)
+	cuentaCorriente.extraer(2000)
+	
+	assert.equals(3000,cuentaCorriente.saldo())
+}
+
+test "probando cuentaGastos"{
+	cuentaGastos.depositar(50000)
+	assert.equals(49800,cuentaGastos.saldo())
+	
+	cuentaGastos.extraer(5000)
+	assert.equals(44600,cuentaGastos.saldo())
+	
+	cuentaGastos.extraer(20000)
+	assert.equals(24200,cuentaGastos.saldo())
+}
+
+
+
+
+
+
+
+
+
+
